@@ -2,7 +2,7 @@ database = [
     {
         "name": "annant",
         "roll_no": "1",
-        "addres": "454446",
+        "address": "454446",
         "contact": "9806",
         "city": "manawar",
         "standard": "1"
@@ -10,7 +10,7 @@ database = [
     {
         "name": "shyam",
         "roll_no": "2",
-        "addres": "380069",
+        "address": "380069",
         "contact": "0990",
         "city": "kolkata",
         "standard": "2"
@@ -18,7 +18,7 @@ database = [
     {
         "name": "akshita",
         "roll_no": "3",
-        "addres": "452010",
+        "address": "452010",
         "contact": "9179",
         "city": "indore",
         "standard": "3"
@@ -26,7 +26,7 @@ database = [
     {
         "name": "jay",
         "roll_no": "4",
-        "addres": "656664",
+        "address": "656664",
         "contact": "7644",
         "city": "ahmedabad",
         "standard": "4"
@@ -34,7 +34,7 @@ database = [
     {
         "name": "anna",
         "roll_no": "5",
-        "addres": "452020",
+        "address": "452020",
         "contact": "7000",
         "city": "indore",
         "standard": "5"
@@ -44,7 +44,7 @@ database = [
 student = {
     "name": None,
     "roll_no": None,
-    "addres": None,
+    "address": None,
     "contact": None,
     "city": None,
     "standard": None
