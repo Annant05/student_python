@@ -1,14 +1,14 @@
 class Student:
-    name = None
     roll_no = None
+    name = None
     address = None
     contact = None
     city = None
     standard = None
 
-    def __init__(self, name, roll_no, address, contact, city, standard):
-        self.name = name
+    def __init__(self, roll_no, name, address, contact, city, standard):
         self.roll_no = roll_no
+        self.name = name
         self.address = address
         self.contact = contact
         self.city = city
@@ -16,8 +16,8 @@ class Student:
 
     def show(self):
         print("\n")
-        print(f'name : {self.name}')
         print(f'roll_no : {self.roll_no}')
+        print(f'name : {self.name}')
         print(f'address : {self.address}')
         print(f'contact : {self.contact}')
         print(f'city : {self.city}')
@@ -37,11 +37,11 @@ class Student:
         if(standard != ''):
             self.standard = standard
 
-    def get_name(self):
-        return self.name
-
     def get_roll_no(self):
         return self.roll_no
+
+    def get_name(self):
+        return self.name
 
     def get_address(self):
         return self.address

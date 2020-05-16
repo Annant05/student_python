@@ -1,19 +1,34 @@
 from student_class import Student
 from database_class import StudentDatabase
 
-database = []
-sample_list = [
-    {"roll_no": "1", "name": "annant", "address": "454446",
-        "contact": "9806", "city": "manawar", "standard": "1"},
-    {"roll_no": "2", "name": "shyam", "address": "380069",
-        "contact": "0990", "city": "kolkata", "standard": "2"},
-    {"roll_no": "3", "name": "akshita", "address": "452010",
-        "contact": "9179", "city": "indore", "standard": "3"},
-    {"roll_no": "4", "name": "jay", "address": "656664",
-        "contact": "7644", "city": "ahmedabad", "standard": "4"},
-    {"roll_no": "5", "name": "anna", "address": "452020",
-        "contact": "7000", "city": "indore", "standard": "5"}
-]
+
+database = StudentDatabase()
+
+
+
+
+
+
+
+
+
+
+
+
+
+# database = []
+# sample_list = [
+#     {"roll_no": "1", "name": "annant", "address": "454446",
+#         "contact": "9806", "city": "manawar", "standard": "1"},
+#     {"roll_no": "2", "name": "shyam", "address": "380069",
+#         "contact": "0990", "city": "kolkata", "standard": "2"},
+#     {"roll_no": "3", "name": "akshita", "address": "452010",
+#         "contact": "9179", "city": "indore", "standard": "3"},
+#     {"roll_no": "4", "name": "jay", "address": "656664",
+#         "contact": "7644", "city": "ahmedabad", "standard": "4"},
+#     {"roll_no": "5", "name": "anna", "address": "452020",
+#         "contact": "7000", "city": "indore", "standard": "5"}
+# ]
 
 
 for elem in sample_list:
