@@ -2,52 +2,13 @@ from student_class import Student
 from database_class import StudentDatabase
 
 
-database = StudentDatabase()
+database = StudentDatabase(
+    host="localhost",
+    user="annant",
+    password="annant",
+    database="student")
 
-
-
-
-
-
-
-
-
-
-
-
-
-# database = []
-# sample_list = [
-#     {"roll_no": "1", "name": "annant", "address": "454446",
-#         "contact": "9806", "city": "manawar", "standard": "1"},
-#     {"roll_no": "2", "name": "shyam", "address": "380069",
-#         "contact": "0990", "city": "kolkata", "standard": "2"},
-#     {"roll_no": "3", "name": "akshita", "address": "452010",
-#         "contact": "9179", "city": "indore", "standard": "3"},
-#     {"roll_no": "4", "name": "jay", "address": "656664",
-#         "contact": "7644", "city": "ahmedabad", "standard": "4"},
-#     {"roll_no": "5", "name": "anna", "address": "452020",
-#         "contact": "7000", "city": "indore", "standard": "5"}
-# ]
-
-
-for elem in sample_list:
-    student = Student(
-        roll_no=elem["roll_no"],
-        name=elem["name"],
-        address=elem["address"],
-        contact=elem["contact"],
-        city=elem["city"],
-        standard=elem["standard"]
-    )
-    database.append(student)
-
-# for student in database:
-#     student.show()
-
-# student = database[0]
-# student.update("aaa")
-# student.show()
+database.connect_db()
 
 
 def add():
@@ -65,63 +26,71 @@ def add():
         city=city,
         standard=standard
     )
-    database.append(student)
-
-
-def showall():
-    for student in database:
-        student.show()
-
-
-def get_index(roll_no):
-    index = 0
-    for student in database:
-        if roll_no == student.get_roll_no():
-            return index
-        index += 1
-    return -1
-
-
-def delete(roll_no):
-    index = get_index(roll_no)
-    if(index == -1):
-        return "student does not exist"
-    else:
-        removed_stud = database.pop(index)
-        removed_stud.show()
-        return f'student {roll_no}: {removed_stud.get_name()} has been removed'
+    database.insert_student(student)
 
 
 def search(roll_no):
-    index = get_index(roll_no)
-    if(index == -1):
-        return "student does not exist"
+    result = database.show_student_info(roll_no)
+    if(result != None):
+        result.show()
     else:
-        database[index].show()
+        print(f'student with roll_no: {roll_no} does not exists in database')
+
+
+def showall():
+    database.show_all_students()
+
+
+def delete(roll_no):
+    database.delete_student(roll_no=roll_no)
 
 
 def update(roll_no):
-    index = get_index(roll_no)
-    if(index == -1):
-        return "student does not exist"
-    else:
-        print("enter val to update leave blank to keep the previous value")
+    result = database.show_student_info(roll_no)
 
-        roll_no = input("Enter roll_no: ")
-        name = input("Enter name: ")
-        address = input("Enter address: ")
-        contact = input("Enter contact: ")
-        city = input("Enter city: ")
-        standard = input("Enter standard: ")
+    if(result != None):
+        print(
+            f'You are updating information of \n roll_no: {roll_no} Name: {result.get_name()}')
+        print(
+            "Enter new value to update. Leave blank to keep the previous value.")
 
-        database[index].update(
-            roll_no=roll_no,
-            name=name,
-            address=address,
-            contact=contact,
-            city=city,
-            standard=standard
+        new_roll_no = input("Enter new roll_no: ")
+        new_name = input("Enter new name: ")
+        new_address = input("Enter new address: ")
+        new_contact = input("Enter new contact: ")
+        new_city = input("Enter new city: ")
+        new_standard = input("Enter new standard: ")
+
+        result.update(
+            roll_no=new_roll_no,
+            name=new_name,
+            address=new_address,
+            contact=new_contact,
+            city=new_city,
+            standard=new_standard
         )
+
+        if(database.update_student(roll_no, result)):
+            print("Success! Information updated")
+        else:
+            print("Failed! to update Information")
+
+    else:
+        print(f'Roll_no : {roll_no} does not exist in Database .')
+
+
+sample_list = [
+    {"roll_no": "1", "name": "annant", "address": "454446",
+        "contact": "9806", "city": "manawar", "standard": "1"},
+    {"roll_no": "2", "name": "shyam", "address": "380069",
+        "contact": "0990", "city": "kolkata", "standard": "2"},
+    {"roll_no": "3", "name": "akshita", "address": "452010",
+        "contact": "9179", "city": "indore", "standard": "3"},
+    {"roll_no": "4", "name": "jay", "address": "656664",
+        "contact": "7644", "city": "ahmedabad", "standard": "4"},
+    {"roll_no": "5", "name": "anna", "address": "452020",
+        "contact": "7000", "city": "indore", "standard": "5"}
+]
 
 
 def main():
@@ -130,6 +99,7 @@ def main():
         print("1: Add \t 2: showall \t 3: search \t 4: delete \t 5: update  0: exit")
         choice = int(input("enter your choice : "))
         if(choice == 0):
+            database.disconnect_db()
             print("Thank you for using our system.  :)) ")
         elif(choice == 1):
             print("add new student")
@@ -142,10 +112,10 @@ def main():
             search(roll_no)
         elif(choice == 4):
             roll_no = str(input("enter Roll no to delete : "))
-            print(delete(roll_no))
+            delete(roll_no)
         elif(choice == 5):
             roll_no = str(input("enter Roll no to update : "))
-            print(update(roll_no))
+            update(roll_no)
 
 
-# main()
+main()

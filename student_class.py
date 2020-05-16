@@ -14,6 +14,17 @@ class Student:
         self.city = city
         self.standard = standard
 
+    # def __init__(self):
+    #     pass
+
+    # def add_student(self):
+    #         self.roll_no = input("Enter roll_no: ")
+    #         self.name = input("Enter name: ")
+    #         self.address = input("Enter address: ")
+    #         self.contact = input("Enter contact: ")
+    #         self.city = input("Enter city: ")
+    #         self.standard = input("Enter standard: ")
+
     def show(self):
         print("\n")
         print(f'roll_no : {self.roll_no}')
@@ -22,12 +33,13 @@ class Student:
         print(f'contact : {self.contact}')
         print(f'city : {self.city}')
         print(f'standard : {self.standard}')
+        print("\n")
 
-    def update(self, name='', roll_no='', address='', contact='', city='', standard=''):
-        if(name != ''):
-            self.name = name
+    def update(self, roll_no='', name='', address='', contact='', city='', standard=''):
         if(roll_no != ''):
             self.roll_no = roll_no
+        if(name != ''):
+            self.name = name
         if(address != ''):
             self.address = address
         if(contact != ''):
