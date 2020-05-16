@@ -106,30 +106,33 @@ def sample_data():
 
 
 def main():
-    choice = -1
+    choice = "-1"
     while(choice):
         print("\n1: Add \t 2: showall \t 3: search \t 4: delete \t 5: update  \t  6: Insert sample data \t 0: exit")
-        choice = int(input("enter your choice : "))
-        if(choice == 0):
+        choice = (input("enter your choice : "))
+        if(choice == "0"):
             database.disconnect_db()
             print("Thank you for using our system.  :)) ")
-        elif(choice == 1):
+            exit(0)
+        elif(choice == "1"):
             print("add new student")
             add()
-        elif(choice == 2):
+        elif(choice == "2"):
             print("showing all students")
             showall()
-        elif(choice == 3):
+        elif(choice == "3"):
             roll_no = str(input("enter Roll no to search : "))
             search(roll_no)
-        elif(choice == 4):
+        elif(choice == "4"):
             roll_no = str(input("enter Roll no to delete : "))
             delete(roll_no)
-        elif(choice == 5):
+        elif(choice == "5"):
             roll_no = str(input("enter Roll no to update : "))
             update(roll_no)
-        elif(choice == 6):
+        elif(choice == "6"):
             sample_data()
+        else:
+            continue
 
 
 main()
