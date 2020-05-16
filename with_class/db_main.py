@@ -79,24 +79,36 @@ def update(roll_no):
         print(f'Roll_no : {roll_no} does not exist in Database .')
 
 
-sample_list = [
-    {"roll_no": "1", "name": "annant", "address": "454446",
-        "contact": "9806", "city": "manawar", "standard": "1"},
-    {"roll_no": "2", "name": "shyam", "address": "380069",
-        "contact": "0990", "city": "kolkata", "standard": "2"},
-    {"roll_no": "3", "name": "akshita", "address": "452010",
-        "contact": "9179", "city": "indore", "standard": "3"},
-    {"roll_no": "4", "name": "jay", "address": "656664",
-        "contact": "7644", "city": "ahmedabad", "standard": "4"},
-    {"roll_no": "5", "name": "anna", "address": "452020",
-        "contact": "7000", "city": "indore", "standard": "5"}
-]
+def sample_data():
+    sample_list = [
+        {"roll_no": "1", "name": "annant", "address": "454446",
+            "contact": "9806", "city": "manawar", "standard": "1"},
+        {"roll_no": "2", "name": "shyam", "address": "380069",
+            "contact": "0990", "city": "kolkata", "standard": "2"},
+        {"roll_no": "3", "name": "akshita", "address": "452010",
+            "contact": "9179", "city": "indore", "standard": "3"},
+        {"roll_no": "4", "name": "jay", "address": "656664",
+            "contact": "7644", "city": "ahmedabad", "standard": "4"},
+        {"roll_no": "5", "name": "anna", "address": "452020",
+            "contact": "7000", "city": "indore", "standard": "5"}
+    ]
+    for student in sample_list:
+        database.insert_student(
+            Student(
+                roll_no=student["roll_no"],
+                name=student["name"],
+                address=student["address"],
+                contact=student["contact"],
+                city=student["city"],
+                standard=student["standard"]
+            )
+        )
 
 
 def main():
     choice = -1
     while(choice):
-        print("1: Add \t 2: showall \t 3: search \t 4: delete \t 5: update  0: exit")
+        print("\n1: Add \t 2: showall \t 3: search \t 4: delete \t 5: update  \t  6: Insert sample data \t 0: exit")
         choice = int(input("enter your choice : "))
         if(choice == 0):
             database.disconnect_db()
@@ -116,6 +128,8 @@ def main():
         elif(choice == 5):
             roll_no = str(input("enter Roll no to update : "))
             update(roll_no)
+        elif(choice == 6):
+            sample_data()
 
 
 main()

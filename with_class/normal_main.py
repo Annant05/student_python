@@ -1,5 +1,4 @@
 from student_class import Student
-from database_class import StudentDatabase
 
 database = []
 sample_list = [
@@ -133,4 +132,4 @@ def main():
             print(update(roll_no))
 
 
-# main()
+main()
